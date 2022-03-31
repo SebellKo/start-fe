@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>source</title>
+    <style>
+        * {margin: 0; padding: 0;}
+        #board {width: 416px; height: 416px; display: flex; flex-wrap: wrap;border: 5px solid gray;}
+        #white {width: 100px; height: 100px; border: 2px solid white;}
+        #black {width: 100px; height: 100px; background-color: black; border: 2px solid black;}
+    </style>
+</head>
+<body>
+
+<div id="board">
+    
+</div>
+<script>
+    var board = document.getElementById("board");
+
+
+    for(var i=0; i<4; i++){
+        for(var j=0; j<4; j++){
+            if (i % 2 == 0) {
+                if (j % 2 == 0) {
+                    const blackBox = document.createElement('div');
+                    blackBox.id = 'black';
+                    board.appendChild(blackBox);
+                }
+                else if (j % 2 == 1) {
+                    const whiteBox = document.createElement('div')
+                    whiteBox.id = 'white';
+                    board.appendChild(whiteBox);
+                }
+            }
+            else if (i % 2 == 1) {
+                if (j % 2 == 0) {
+                    const whiteBox = document.createElement('div');
+                    whiteBox.id = 'white';
+                    board.appendChild(whiteBox);
+                }
+                else if (j % 2 == 1) {
+                    const blackBox = document.createElement('div')
+                    blackBox.id = 'black';
+                    board.appendChild(blackBox);
+                }
+            }
+        }
+    }
+    board.childNodes.forEach(function(box) {
+        box.addEventListener('click', function() {
+            box.style.backgroundColor = 'red';
+        })
+    })
+</script>
+</body>
+</html>
