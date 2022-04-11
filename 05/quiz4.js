@@ -1,6 +1,5 @@
 const box = document.querySelector('#box')
 
-
 let isMouseDown = false;
 let mouseX = 0;
 let mouseY = 0;
