@@ -10,14 +10,14 @@ function toggleBug() {
     }
     else if(bug.style.display == 'none'){
         bug.style.display = 'block';
-        randPosition(box.clientWidth, bug.clientWidth);
+        randPosition(box.clientWidth, box.clientHeight,  bug.clientWidth, bug.clientHeight);
     }
 };
 
-function randPosition(boxWidth, bugWidth) {
-    bug.style.left = Math.floor(Math.random() * (boxWidth - bugWidth)) + 1 + 'px';
-    bug.style.top = Math.floor(Math.random() * (boxWidth - bugWidth)) + 1 + 'px';
-}
+// function randPosition(boxWidth, bugWidth) {
+//     bug.style.left = Math.floor(Math.random() * (boxWidth - bugWidth)) + 1 + 'px';
+//     bug.style.top = Math.floor(Math.random() * (boxWidth - bugWidth)) + 1 + 'px';
+// }
 
 
 window.addEventListener('load', function() {
@@ -38,4 +38,9 @@ box.addEventListener('click', function(event) {
         alert('gameover');
         location.reload();
     }
-})
+});
+
+randPosition = (boxWidth, boxHeight, bugWidth, bugHeight) => {
+    bug.style.left = Math.floor(Math.random() * (boxWidth - bugWidth)) + 1 + 'px';
+    bug.style.top = Math.floor(Math.random() * (boxHeight - bugHeight)) + 1 + 'px';
+}

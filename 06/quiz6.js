@@ -25,3 +25,8 @@ function Gugudan(num) {
     return gugudanArr;
 }
 
+const person = ['sejong', 'minheyop', 'jisoo'];
+
+const [ko, kim, kang] = person;
+
+console.log(ko, kim, kang);
