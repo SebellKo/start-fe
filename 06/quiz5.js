@@ -1,4 +1,4 @@
-const boxes = document.querySelectorAll('.box');
+// const boxes = document.querySelectorAll('.box');
 const leftBox = document.querySelector('.box');
 const rightBox = document.querySelector('.box1');
 
@@ -6,7 +6,7 @@ let downX = 0;
 let downY = 0;
 let isMouseDown = false;
 
-console.log(boxes);
+// console.log(boxes);
 
 function dragNdrop(box) {
     box.addEventListener('mousedown', function(event) {
