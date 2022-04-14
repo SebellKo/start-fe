@@ -14,10 +14,10 @@ function toggleBug() {
     }
 };
 
-// function randPosition(boxWidth, bugWidth) {
-//     bug.style.left = Math.floor(Math.random() * (boxWidth - bugWidth)) + 1 + 'px';
-//     bug.style.top = Math.floor(Math.random() * (boxWidth - bugWidth)) + 1 + 'px';
-// }
+function randPosition(boxWidth, boxHeight, bugWidth, bugHeight) {
+    bug.style.left = Math.floor(Math.random() * (boxWidth - bugWidth)) + 1 + 'px';
+    bug.style.top = Math.floor(Math.random() * (boxHeight - bugHeight)) + 1 + 'px';
+}
 
 
 window.addEventListener('load', function() {
@@ -40,7 +40,7 @@ box.addEventListener('click', function(event) {
     }
 });
 
-randPosition = (boxWidth, boxHeight, bugWidth, bugHeight) => {
-    bug.style.left = Math.floor(Math.random() * (boxWidth - bugWidth)) + 1 + 'px';
-    bug.style.top = Math.floor(Math.random() * (boxHeight - bugHeight)) + 1 + 'px';
-}
+// randPosition = (boxWidth, boxHeight, bugWidth, bugHeight) => {
+//     bug.style.left = Math.floor(Math.random() * (boxWidth - bugWidth)) + 1 + 'px';
+//     bug.style.top = Math.floor(Math.random() * (boxHeight - bugHeight)) + 1 + 'px';
+// }
