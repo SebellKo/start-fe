@@ -1,7 +1,5 @@
 const url = `https://dapi.kakao.com/v2/search/web?query=#query&size=10&page=#pageNum`;
 const $docs = document.querySelector('#docs');
-// const $query = document.querySelector('#query');
-// const $searchButton = document.querySelector('#searchButton');
 const $searchForm = document.querySelector('#searchForm');
 const $query = document.querySelector('[name="query"]');
 const $moreBtn = document.querySelector('#moreBtn');
@@ -25,11 +23,8 @@ function getFetch(url, callback) {
 function search() {
   const query = $query.value;
   const searchUrl = url.replace('#query', query).replace('#pageNum', pageNum);
-  // url = url.replace('#query', query);
   getFetch(searchUrl, (data) => {
     const { documents } = data;
-    // const documents = data.documents;
-    // console.log(documents);
 
     const docs = documents.map((document) => {
       return document.contents;
@@ -37,16 +32,6 @@ function search() {
     $docs.innerHTML += docs.join('<hr>');
   });
 }
-
-// $searchButton.addEventListener('click', search);
-// $query.addEventListener('keydown', (event) => {
-//   if (event.key !== 'Enter') return;
-//   search();
-
-//   // if (event.key === 'Enter') {
-//   //   search();
-//   // }
-// });
 
 $searchForm.addEventListener('submit', (event) => {
   if (!isSubmit) {
