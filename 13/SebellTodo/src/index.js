@@ -1,51 +1,34 @@
-import './app.css';
-
-const formTag = document.querySelector('.new-task');
-const inputBar = document.querySelector('.new-task input');
-const textSpan = document.querySelector('.text');
-const listContainer = document.querySelector('.container ul');
-
-let deleteBtn = document.querySelectorAll('.delete');
-let toggleBox = document.querySelectorAll('.toggle-checked');
+import { printTodos } from "./printTodos";
+import { init as initForm } from "./form";
+import { get as getStorage } from "./storage";
+import "./app.css";
 
 
+const todos = getStorage() || [];
 
+const print = () => {
+  printTodos(todos);
+};
 
-formTag.addEventListener('submit', (event) => {
-    event.preventDefault();
-    console.log(deleteBtn);
-    const content = inputBar.value;
-    
-    const contentList = `<li>
-    <button class="delete">×</button>
-    <input type="checkbox" class="toggle-checked">
-    <span class="text">${content}</span>
-    </li>`;
+const deleteTodo = (index) => {
+  todos.splice(index, 1);
+  print();
+};
 
-    listContainer.appendChild(contentList);
-    initElements();
-})
+const toggleTodo = (index) => {
+  todos[index].isDone = !todos[index].isDone;
+  print();
+};
 
-const initElements = () => {
-    deleteBtn =document.querySelectorAll('.delete');
-    toggleBox = document.querySelectorAll('.toggle-checked');
-}
+document.body.addEventListener("click", (e) => {
+  const index = parseInt(e.target.parentNode.dataset.index, 10); // 부모의 인덱스 가져오기
 
-toggleBox.forEach((item) => {
-    item.addEventListener('click', () => {
-        if (toggleBox.checked == true) {
-            textSpan.style.textDecoration = 'line-through';
-        }
-        else if (toggleBox.checked == false) {
-            textSpan.style.textDecoration = 'none';
-        }
-        console.log(listContainer);
-    });
+  if (e.target.className === "delete") {
+    deleteTodo(index);
+  } else if (e.target.className === "toggle-checked") {
+    toggleTodo(index);
+  }
 });
 
-deleteBtn.forEach((item) => {
-    item.addEventListener('click', () => {
-        listContainer.removeChild(listContainer.lastChild);
-        console.log('hi');
-    });
-});
+initForm(todos);
+print();
